@@ -1,20 +1,20 @@
 # cybertron
 config files and readmes for personal lab running on a laptop
 
-###ports
+### ports
 
 portainer: 9000
 registry: 9001
 gogs: 9002
 drone: 9003
 
-###Notes
+### Notes
 
 * having an incorrect hostname will not allow drone to register new repo and throws nilpointer exceptions without specific errors
 * root url should be properly configured for gogs. Else, drone will not be able to clone
 
 
-###To-do
+### To-do
 
 * ngrok integration and caddy service
 * all services should only talk to each other through caddy
