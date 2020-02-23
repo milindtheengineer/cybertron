@@ -1,0 +1,25 @@
+0.0.0.0 {
+  # Add the slash on the end, maybe someone knows how to do this in the proxy directive
+  gzip {
+        not /drone/stream/
+    }
+  redir /drone /drone/
+  redir /portainer /portainer/
+  redir /gogs /gogs/
+  proxy /portainer/ localhost:9000 {
+    without /portainer
+    # Add Forwarded-For headers
+    transparent
+    # Expect websocket upgrade
+    websocket
+  }
+  proxy /gogs/ http://localhost:9002 {
+   without /gogs
+   websocket
+  }
+  proxy /drone http://localhost:9003 {
+   without /drone
+   websocket
+   transparent
+  }
+}
